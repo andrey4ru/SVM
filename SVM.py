@@ -32,10 +32,10 @@ class SVM:
         sol = solvers.qp(Q, P, G, h, A, b)  # solve Lagrangian dual problem
         lamd = sol['x']
 
-        w = [0] * 4
+        w = [0] * data.shape[1]
 
         for i in range(len(y)):  # calculating vector of coefficients W
-            for j in range(4):
+            for j in range(data.shape[1]):
                 w[j] += x[i, j] * y[i] * lamd[i]
 
         # calculate hyperplane parameter b
